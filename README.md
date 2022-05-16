@@ -1,4 +1,4 @@
-# Project Name
+# code301-project02-lab06
 
 **Author**: Ben Choe
 **Version**: 1.0.0
@@ -13,12 +13,45 @@ This web app plugs in to LocationIQ and allows users to get location information
 4. Deploy.
 
 ## Architecture
-
+- App.js: contains the main functions/methods.
+- Libraries: axios - library that is used to make the requests.
+- CSS; styling.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+2022-05-16 at 17:30 EST: Initial commit.
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+**Partner Developers**: Sam Brindle, Jon Armstrong
+
+
+## Features
+
+### Name of feature: Locations
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+### Name of feature: Map
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+### Name of feature: Errors
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
