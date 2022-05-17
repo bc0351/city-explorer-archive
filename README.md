@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
 # code301-project02-lab06
-=======
-# Project Name
 
 **Author**: Ben Choe
 **Version**: 1.0.0
@@ -58,4 +55,3 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
->>>>>>> Stashed changes
