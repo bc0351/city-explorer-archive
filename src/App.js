@@ -6,7 +6,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      request: {},
+      cityName: '',
       response: {},
       error: {},
     };
@@ -14,46 +14,33 @@ export default class App extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    let url = encodeURI(
-      `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${e.target.value}&format=json`
-    );
-    let cityInfo = {};
+    let q = this.state.cityName;
+    let url = encodeURI(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${q}&format=json`);
     try {
-      cityInfo = await axios.get(url);
-      this.setState({
-        city: cityInfo,
-      });
+      let response = await axios.get(url);
+      console.log(response);
     } catch (err) {
       try {
-        url = encodeURI(`https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${e.target.value}&format=json`);
-        cityInfo = await axios.get(url);
-        this.setState({
-          city: cityInfo,
-        });
+        url = encodeURI(`https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${q}&format=json`);
+        let response = await axios.get(url);
+        console.log(response);
       } catch (err) {
         this.setState({
-          error: err,
+          error: err
         });
+        console.log(this.state.error);
       }
     }
   };
 
   handleChange = async (e) => {
-    e.preventDefault();
-    console.log(process.env.REACT_APP_LOCATION_IQ_API_KEY);
-    let q = e.currentTarget.value.toString();
-    let url = encodeURI(
-      `https://api.locationiq.com/v1/autocomplete.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${q}&limit=5`
-    );
-    let cityInfo = await axios.get(url);
-    try {
-      console.log(cityInfo);
-      document.getElementById('cityName').value = cityInfo;
-    } catch (err) {
-      this.setState({
-        error: err,
-      });
-    }
+    this.setState({
+      cityName: e.currentTarget.value
+    });
+    console.log(this.state.cityName);
+    let url = `https://api.locationiq.com/v1/autocomplete.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${this.state.cityName}&limit=5`;
+    let response = await axios.get(url);
+    console.log(response);
   };
 
   render() {
@@ -67,15 +54,8 @@ export default class App extends React.Component {
             type="text"
             placeholder="Search for city..."
             className="form-control ds-input"
-            autoComplete="off"
-            role="combobox"
             id="cityName"
-            aria-autocomplete="list"
-            aria-expanded="false"
-            aria-label="search input"
-            aria-controls=''
             onChange={this.handleChange}
-            value={this.state.city}
           />
           <Button>Explore!</Button>
         </Form>
