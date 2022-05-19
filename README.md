@@ -54,8 +54,8 @@ Start time: _____
 
 Finish time: _____
 
-<<<<<<< HEAD
 Actual time needed to complete: _____
-=======
-Actual time needed to complete: _____
->>>>>>> d4a023ffeee9f9b31735fd65777157e6174cc224
+
+## WWRC
+
+![wwrc](./src/assets/img/wwrc.png)
