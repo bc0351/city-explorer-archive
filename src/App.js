@@ -3,6 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Forecast from './components/Forecast';
 
+const API_BASE_URL = process.env.API_BASE_URL;
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,11 +20,10 @@ export default class App extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    let q = this.state.cityName;
-    let urlUS = encodeURI(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${q}&format=json`);
-    let urlEU = encodeURI(`https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${q}&format=json`);
+    let city = this.state.cityName;
+    let url = `${API_BASE_URL}/location?&city=${city}`;
     try {
-      let response = await axios.get(urlUS) || await axios.get(urlEU);
+      let response = await axios.get(url);
       console.log(response);
     } catch (err) {
       this.setState({
@@ -53,7 +54,7 @@ export default class App extends React.Component {
       
       console.log(this.state.cityName);
 
-      let url = `https://api.locationiq.com/v1/autocomplete.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${this.state.cityName}&limit=5`;
+      let url = `${process.env.REACT_APP_LOC_IQ_AUTO_BASE_URL}?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${this.state.cityName}&limit=5`;
       let response = await axios.get(url);
 
       console.log(response);
